@@ -1,0 +1,58 @@
+package com.example.mystats;
+
+import org.opendaylight.controller.sal.core.Node;
+import org.opendaylight.controller.sal.match.MatchType;
+import org.opendaylight.controller.sal.reader.FlowOnNode;
+import org.opendaylight.controller.sal.utils.ServiceHelper;
+import org.opendaylight.controller.statisticsmanager.IStatisticsManager;
+import org.opendaylight.controller.switchmanager.ISwitchManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Simple bundle to grab some statistics
+ * Fred Hsu
+ */
+public class MyStatsExample {
+	private static final Logger log = LoggerFactory
+			.getLogger(MyStatsExample.class);
+
+	public MyStatsExample() {
+
+	}
+
+	void init() {
+		log.debug("INIT called!");
+	}
+
+	void destroy() {
+		log.debug("DESTROY called!");
+	}
+
+	void start() {
+		log.debug("START called!");
+		getFlowStatistics();
+	}
+
+	void stop() {
+		log.debug("STOP called!");
+	}
+
+	void getFlowStatistics() {
+		String containerName = "default";
+		IStatisticsManager statsManager = (IStatisticsManager) ServiceHelper
+				.getInstance(IStatisticsManager.class, containerName, this);
+
+		ISwitchManager switchManager = (ISwitchManager) ServiceHelper
+				.getInstance(ISwitchManager.class, containerName, this);
+
+		for (Node node : switchManager.getNodes()) {
+			System.out.println("Node: " + node);
+			for (FlowOnNode flow : statsManager.getFlows(node)) {
+				System.out.println(" DST: "
+						+ flow.getFlow().getMatch().getField(MatchType.NW_DST)
+						+ " Bytes: " + flow.getByteCount());
+			}
+		}
+	}
+}

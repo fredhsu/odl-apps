@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="default-0fb487"
+		revision="0.1-SNAPSHOT"
+		extra-sbtVersion="0.12"
+		extra-scalaVersion="2.9.2"
+		conf="compile"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
+		date="20130515122357"/>
+	<dependencies>
+		<module organisation="com.typesafe.sbt" name="sbt-osgi">
+			<revision name="0.5.0" status="release" pubdate="20130123181729" resolver="sbt-plugin-releases" artresolver="sbt-plugin-releases" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2" downloaded="false" searched="false" default="false" conf="default(compile), compile" position="5">
+				<metadata-artifact status="no" details="" size="2060" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbt/sbt-osgi/ivy-0.5.0.xml" searched="false" origin-is-local="false" origin-location="http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-osgi/scala_2.9.2/sbt_0.12/0.5.0/ivys/ivy.xml"/>
+				<caller organisation="default" name="default-0fb487" conf="compile" rev="0.5.0" rev-constraint-default="0.5.0" rev-constraint-dynamic="0.5.0" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<artifacts>
+					<artifact name="sbt-osgi" type="jar" ext="jar" status="no" details="" size="50514" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbt/sbt-osgi/jars/sbt-osgi-0.5.0.jar">
+						<origin-location is-local="false" location="http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-osgi/scala_2.9.2/sbt_0.12/0.5.0/jars/sbt-osgi.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="biz.aQute" name="bndlib">
+			<revision name="1.50.0" status="release" pubdate="20111104104419" resolver="public" artresolver="public" homepage="     http://www.aQute.biz/Code/Bnd   " downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="6">
+				<license name="         Apache Software License 2.0       " url="         http://www.opensource.org/licenses/apache2.0.php       "/>
+				<metadata-artifact status="no" details="" size="2401" time="0" location="/home/fhsu/.ivy2/cache/biz.aQute/bndlib/ivy-1.50.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/biz/aQute/bndlib/1.50.0/bndlib-1.50.0.pom"/>
+				<caller organisation="com.typesafe.sbt" name="sbt-osgi" conf="compile" rev="1.50.0" rev-constraint-default="1.50.0" rev-constraint-dynamic="1.50.0" callerrev="0.5.0"/>
+				<artifacts>
+					<artifact name="bndlib" type="jar" ext="jar" status="no" details="" size="919577" time="0" location="/home/fhsu/.ivy2/cache/biz.aQute/bndlib/jars/bndlib-1.50.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/biz/aQute/bndlib/1.50.0/bndlib-1.50.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="default" name="default-6eccec">
+			<revision name="0.0" status="integration" pubdate="20130515122353" resolver="inter-project" artresolver="inter-project" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2" downloaded="false" searched="false" default="false" conf="default(compile), compile" position="0">
+				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
+				<caller organisation="default" name="default-0fb487" conf="compile" rev="0.0" rev-constraint-default="0.0" rev-constraint-dynamic="0.0" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.sbteclipse" name="sbteclipse-plugin">
+			<revision name="2.2.0" status="release" pubdate="20130425133124" resolver="typesafe-ivy-releases" artresolver="typesafe-ivy-releases" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2" downloaded="false" searched="false" default="false" conf="default(compile), compile" position="1">
+				<metadata-artifact status="no" details="" size="1807" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-plugin/ivy-2.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/ivy-releases/com.typesafe.sbteclipse/sbteclipse-plugin/scala_2.9.2/sbt_0.12/2.2.0/ivys/ivy.xml"/>
+				<caller organisation="default" name="default-0fb487" conf="compile" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<caller organisation="default" name="default-6eccec" conf="compile" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="0.0" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<artifacts>
+					<artifact name="sbteclipse-plugin" type="jar" ext="jar" status="no" details="" size="7979" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-plugin/jars/sbteclipse-plugin-2.2.0.jar">
+						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/ivy-releases/com.typesafe.sbteclipse/sbteclipse-plugin/scala_2.9.2/sbt_0.12/2.2.0/jars/sbteclipse-plugin.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.1.0" evicted="latest-revision" evicted-reason="" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2" downloaded="false" searched="false" conf="default(compile), compile" position="-1">
+				<evicted-by rev="2.2.0"/>
+				<caller organisation="default" name="default-0fb487" conf="compile" rev="2.1.0" rev-constraint-default="2.1.0" rev-constraint-dynamic="2.1.0" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.sbteclipse" name="sbteclipse-core">
+			<revision name="2.2.0" status="release" pubdate="20130425133124" resolver="typesafe-ivy-releases" artresolver="typesafe-ivy-releases" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2" downloaded="false" searched="false" default="false" conf="default(compile), compile" position="2">
+				<metadata-artifact status="no" details="" size="1747" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-core/ivy-2.2.0.xml" searched="false" origin-is-local="false" origin-location="http://repo.typesafe.com/typesafe/ivy-releases/com.typesafe.sbteclipse/sbteclipse-core/scala_2.9.2/sbt_0.12/2.2.0/ivys/ivy.xml"/>
+				<caller organisation="com.typesafe.sbteclipse" name="sbteclipse-plugin" conf="compile" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="2.2.0" extra-sbtVersion="0.12" extra-scalaVersion="2.9.2"/>
+				<artifacts>
+					<artifact name="sbteclipse-core" type="jar" ext="jar" status="no" details="" size="273882" time="0" location="/home/fhsu/.ivy2/cache/scala_2.9.2/sbt_0.12/com.typesafe.sbteclipse/sbteclipse-core/jars/sbteclipse-core-2.2.0.jar">
+						<origin-location is-local="false" location="http://repo.typesafe.com/typesafe/ivy-releases/com.typesafe.sbteclipse/sbteclipse-core/scala_2.9.2/sbt_0.12/2.2.0/jars/sbteclipse-core.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaz" name="scalaz-core_2.9.2">
+			<revision name="6.0.4" status="release" pubdate="20120414021242" resolver="public" artresolver="public" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="3">
+				<license name="BSD-style" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="no" details="" size="2512" time="0" location="/home/fhsu/.ivy2/cache/org.scalaz/scalaz-core_2.9.2/ivy-6.0.4.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.9.2/6.0.4/scalaz-core_2.9.2-6.0.4.pom"/>
+				<caller organisation="com.typesafe.sbteclipse" name="sbteclipse-core" conf="compile" rev="6.0.4" rev-constraint-default="6.0.4" rev-constraint-dynamic="6.0.4" callerrev="2.2.0"/>
+				<artifacts>
+					<artifact name="scalaz-core_2.9.2" type="jar" ext="jar" status="no" details="" size="4474099" time="0" location="/home/fhsu/.ivy2/cache/org.scalaz/scalaz-core_2.9.2/jars/scalaz-core_2.9.2-6.0.4.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scalaz/scalaz-core_2.9.2/6.0.4/scalaz-core_2.9.2-6.0.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.9.2" status="release" pubdate="20120413052921" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="4">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2391" time="0" location="/home/fhsu/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.2/scala-library-2.9.2.pom"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.9.2" conf="default, compile, runtime, master" rev="2.9.2" rev-constraint-default="2.9.2" rev-constraint-dynamic="2.9.2" callerrev="6.0.4"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

@@ -30,10 +30,14 @@ class MyStats {
     val swmgrclass = classOf[ISwitchManager]
     println(swmgrclass)
 		val switchManager:ISwitchManager = ServiceHelper.getInstance(classOf[ISwitchManager], containerName, this).asInstanceOf[ISwitchManager]
+    switchManager.getNodes().map( x => println("Node: " + x))
+    /* Replacing the following with the coe above to make it more functional
     val nodes:scala.collection.mutable.Set[org.opendaylight.controller.sal.core.Node] = switchManager.getNodes()
+
     for (node <- nodes) {
       println("Node: " + node)
     }
+    */
   }
 }
 

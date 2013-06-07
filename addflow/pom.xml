@@ -29,7 +29,9 @@
 							org.opendaylight.controller.sal.utils,
 							org.opendaylight.controller.sal.reader,
 							org.opendaylight.controller.sal.flowprogrammer,
-							org.opendaylight.controller.sal.match,
+              org.opendaylight.controller.sal.match,
+              org.opendaylight.controller.sal.core,
+              org.opendaylight.controller.sal.forwardingrulesmanager,
 							org.slf4j,
 							org.apache.felix.dm
 						</Import-Package>

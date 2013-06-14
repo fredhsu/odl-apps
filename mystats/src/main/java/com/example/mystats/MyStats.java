@@ -14,45 +14,45 @@ import org.slf4j.LoggerFactory;
  * Fred Hsu
  */
 public class MyStats{
-	private static final Logger log = LoggerFactory
-			.getLogger(MyStats.class);
+    private static final Logger log = LoggerFactory
+            .getLogger(MyStats.class);
 
-	public MyStats() {
+    public MyStats() {
 
-	}
+    }
 
-	void init() {
-		log.debug("INIT called!");
-	}
+    void init() {
+        log.debug("INIT called!");
+    }
 
-	void destroy() {
-		log.debug("DESTROY called!");
-	}
+    void destroy() {
+        log.debug("DESTROY called!");
+    }
 
-	void start() {
-		log.debug("START called!");
-		getFlowStatistics();
-	}
+    void start() {
+        log.debug("START called!");
+        getFlowStatistics();
+    }
 
-	void stop() {
-		log.debug("STOP called!");
-	}
+    void stop() {
+        log.debug("STOP called!");
+    }
 
-	void getFlowStatistics() {
-		String containerName = "default";
-		IStatisticsManager statsManager = (IStatisticsManager) ServiceHelper
-				.getInstance(IStatisticsManager.class, containerName, this);
+    void getFlowStatistics() {
+        String containerName = "default";
+        IStatisticsManager statsManager = (IStatisticsManager) ServiceHelper
+                .getInstance(IStatisticsManager.class, containerName, this);
 
-		ISwitchManager switchManager = (ISwitchManager) ServiceHelper
-				.getInstance(ISwitchManager.class, containerName, this);
+        ISwitchManager switchManager = (ISwitchManager) ServiceHelper
+                .getInstance(ISwitchManager.class, containerName, this);
 
-		for (Node node : switchManager.getNodes()) {
-			System.out.println("Node: " + node);
-			for (FlowOnNode flow : statsManager.getFlows(node)) {
-				System.out.println(" DST: "
-						+ flow.getFlow().getMatch().getField(MatchType.NW_DST)
-						+ " Bytes: " + flow.getByteCount());
-			}
-		}
-	}
+        for (Node node : switchManager.getNodes()) {
+            System.out.println("Node: " + node);
+            for (FlowOnNode flow : statsManager.getFlows(node)) {
+                System.out.println(" DST: "
+                        + flow.getFlow().getMatch().getField(MatchType.NW_DST)
+                        + " Bytes: " + flow.getByteCount());
+            }
+        }
+    }
 }

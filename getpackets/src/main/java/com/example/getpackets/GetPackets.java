@@ -1,11 +1,6 @@
 package com.example.getpackets;
 
-import org.opendaylight.controller.sal.core.Node;
-import org.opendaylight.controller.sal.match.MatchType;
-import org.opendaylight.controller.sal.reader.FlowOnNode;
-import org.opendaylight.controller.sal.utils.ServiceHelper;
-import org.opendaylight.controller.statisticsmanager.IStatisticsManager;
-import org.opendaylight.controller.switchmanager.ISwitchManager;
+import org.opendaylight.controller.sal.packet.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +8,11 @@ import org.slf4j.LoggerFactory;
  * Simple bundle to grab some statistics
  * Fred Hsu
  */
-public class GetPackets{
+public class GetPackets implements IListenDataPacket {
     private static final Logger log = LoggerFactory
             .getLogger(GetPackets.class);
+    private IDataPacketService dataPacketService = null;
+
 
     public GetPackets() {
 
@@ -31,28 +28,32 @@ public class GetPackets{
 
     void start() {
         log.debug("START called!");
-        getFlowStatistics();
     }
 
     void stop() {
         log.debug("STOP called!");
     }
 
-    void getFlowStatistics() {
-        String containerName = "default";
-        IStatisticsManager statsManager = (IStatisticsManager) ServiceHelper
-                .getInstance(IStatisticsManager.class, containerName, this);
 
-        ISwitchManager switchManager = (ISwitchManager) ServiceHelper
-                .getInstance(ISwitchManager.class, containerName, this);
 
-        for (Node node : switchManager.getNodes()) {
-            System.out.println("Node: " + node);
-            for (FlowOnNode flow : statsManager.getFlows(node)) {
-                System.out.println(" DST: "
-                        + flow.getFlow().getMatch().getField(MatchType.NW_DST)
-                        + " Bytes: " + flow.getByteCount());
+    @Override
+    public PacketResult receiveDataPacket(RawPacket inPkt) {
+    System.out.println("recevieDataPacket");
+        if (inPkt == null) {
+            return PacketResult.IGNORED;
+        }
+        log.trace("Received a frame of size: {}",
+                        inPkt.getPacketData().length);
+        Packet formattedPak = this.dataPacketService.decodeDataPacket(inPkt);
+        if (formattedPak instanceof Ethernet) {
+            Object nextPak = formattedPak.getPayload();
+            if (nextPak instanceof IPv4) {
+                log.trace("Handled IP packet");
+            }
+            if (nextPak instanceof ARP) {
+                log.trace("Handled ARP packet");
             }
         }
+        return PacketResult.IGNORED;
     }
 }

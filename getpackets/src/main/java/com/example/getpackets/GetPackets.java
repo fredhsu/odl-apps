@@ -45,19 +45,44 @@ public class GetPackets implements IListenDataPacket {
         }
         log.trace("Received a frame of size: {}",
                         inPkt.getPacketData().length);
+        System.out.println("packet size " + inPkt.getPacketData().length);
         Packet formattedPak = this.dataPacketService.decodeDataPacket(inPkt);
+        System.out.println("packet");
+        System.out.println(formattedPak);
         if (formattedPak instanceof Ethernet) {
+            System.out.println("Ethernet packet");
+            System.out.println(formattedPak);
             Object nextPak = formattedPak.getPayload();
+            if (nextPak instanceof ICMP) {
+                System.out.println("ICMP");
+                log.trace("Handled ICMP packet");
+                System.out.println(nextPak);
+            }
             if (nextPak instanceof IPv4) {
+                System.out.println("IP");
                 log.trace("Handled IP packet");
                 System.out.println(((IPv4)nextPak).getSourceAddress());
             }
             if (nextPak instanceof ARP) {
+                System.out.println("Arp");
                 log.trace("Handled ARP packet");
                 System.out.println("Getting protocol address of target:");
                 System.out.println(((ARP)nextPak).getTargetProtocolAddress());
             }
         }
         return PacketResult.IGNORED;
+    }
+
+    // Need these two methods to hook into the data path service
+    // They are called from the activator
+
+    void setDataPacketService(IDataPacketService s) {
+        this.dataPacketService = s;
+    }
+
+    void unsetDataPacketService(IDataPacketService s) {
+        if (this.dataPacketService == s) {
+            this.dataPacketService = null;
+        }
     }
 }

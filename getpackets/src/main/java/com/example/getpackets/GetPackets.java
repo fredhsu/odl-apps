@@ -20,6 +20,7 @@ public class GetPackets implements IListenDataPacket {
 
     void init() {
         log.debug("INIT called!");
+        System.out.println("init for package");
     }
 
     void destroy() {

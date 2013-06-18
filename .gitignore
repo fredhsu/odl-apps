@@ -19,3 +19,6 @@ target/
 *~
 *.swp
 *.swo
+
+# java
+*.jar

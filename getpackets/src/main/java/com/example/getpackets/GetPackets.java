@@ -50,9 +50,12 @@ public class GetPackets implements IListenDataPacket {
             Object nextPak = formattedPak.getPayload();
             if (nextPak instanceof IPv4) {
                 log.trace("Handled IP packet");
+                System.out.println(((IPv4)nextPak).getSourceAddress());
             }
             if (nextPak instanceof ARP) {
                 log.trace("Handled ARP packet");
+                System.out.println("Getting protocol address of target:");
+                System.out.println(((ARP)nextPak).getTargetProtocolAddress());
             }
         }
         return PacketResult.IGNORED;

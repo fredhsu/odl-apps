@@ -1,6 +1,7 @@
 package com.example.getpackets;
 
 import org.opendaylight.controller.sal.packet.*;
+import org.opendaylight.controller.sal.utils.NetUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,13 +62,21 @@ public class GetPackets implements IListenDataPacket {
             if (nextPak instanceof IPv4) {
                 System.out.println("IP");
                 log.trace("Handled IP packet");
-                System.out.println(((IPv4)nextPak).getSourceAddress());
+                int ipAddr = ((IPv4)nextPak).getSourceAddress();
+                InetAddress ip = NetUtils.getInetAddress(ipAddr.getSourceAddress());
+                //byte[] bytes = BigInteger.valueOf(ipAddr).toByteArray();
+                //InetAddress addr = InetAddress.getByAddress(bytes);
+                System.out.println(ip);
             }
             if (nextPak instanceof ARP) {
-                System.out.println("Arp");
                 log.trace("Handled ARP packet");
+                System.out.println("Arp");
+                ARP arp = (ARP)nextPak;
                 System.out.println("Getting protocol address of target:");
-                System.out.println(((ARP)nextPak).getTargetProtocolAddress());
+                targetIP = InetAddress.getByAddress(arp.getTargetProtocolAddress());
+                sourceIP = InetAddress.getByAddress(arp.getSenderProtocolAddress());
+
+                System.out.println();
             }
         }
         return PacketResult.IGNORED;

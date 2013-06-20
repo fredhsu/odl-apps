@@ -55,11 +55,6 @@ public class GetPackets implements IListenDataPacket {
         if (formattedPak instanceof Ethernet) {
             System.out.println(formattedPak);
             Object nextPak = formattedPak.getPayload();
-            if (nextPak instanceof ICMP) {
-                System.out.println("ICMP");
-                log.trace("Handled ICMP packet");
-                System.out.println(nextPak);
-            }
             if (nextPak instanceof IPv4) {
                 IPv4 ipPak = (IPv4)nextPak;
                 System.out.println("IP");
@@ -79,7 +74,7 @@ public class GetPackets implements IListenDataPacket {
                 String protocol = IPProtocols.getProtocolName(ipPak.getProtocol());
                 if (protocol == IPProtocols.ICMP.toString()) {
                     ICMP icmpPak = (ICMP)ipPak.getPayload();
-                    System.out.println("ICMP");
+                    System.out.println("ICMP from checking protocol");
                 }
             }
             if (nextPak instanceof ARP) {

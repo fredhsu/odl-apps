@@ -2,6 +2,7 @@ package com.example.getpackets;
 
 import org.opendaylight.controller.sal.packet.*;
 import org.opendaylight.controller.sal.utils.NetUtils;
+import org.opendaylight.controller.sal.utils.IPProtocols;
 import java.net.InetAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,8 +72,14 @@ public class GetPackets implements IListenDataPacket {
                 System.out.println(sip);
                 System.out.println("DST IP:");
                 System.out.println(dip);
-                if (ipPak.getProtocol() == 1) {
-                    //ICMP icmpPak = (ICMP)ipPak;
+                Object frame = ipPak.getPayload();
+                if (frame instanceof ICMP) {
+                    System.out.println("ICMP from instance");
+                }
+                String protocol = IPProtocols.getProtocolName(ipPak.getProtocol());
+                if (protocol == IPProtocols.ICMP.toString()) {
+                    ICMP icmpPak = (ICMP)ipPak.getPayload();
+                    System.out.println("ICMP");
                 }
             }
             if (nextPak instanceof ARP) {

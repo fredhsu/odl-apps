@@ -9,8 +9,8 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>getpackets</artifactId>
-	<name>getpackets</name>
+	<artifactId>icmpreply</artifactId>
+	<name>icmpreply</name>
 	<url>http://maven.apache.org</url>
 	<packaging>bundle</packaging>
 
@@ -32,10 +32,10 @@
 							org.apache.felix.dm
 						</Import-Package>
 						<Bundle-Activator>
-							com.example.getpackets.Activator
+							com.example.icmpreply.Activator
 						</Bundle-Activator>
 						<Export-Package>
-							com.example.getpackets
+							com.example.icmpreply
 						</Export-Package>
 					</instructions>
 				</configuration>

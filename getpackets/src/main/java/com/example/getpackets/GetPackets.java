@@ -90,13 +90,7 @@ public class GetPackets implements IListenDataPacket {
                 if (protocol == IPProtocols.ICMP.toString()) {
                     ICMP icmpPak = (ICMP)ipPak.getPayload();
                     System.out.println("ICMP from checking protocol");
-                    // Read ICMP type if echo, then create echo reply
-                    // handleICMPPacket((Ethernet) formattedPak, icmpPak, inPkt.getIncomingNodeConnector());
-
-					// Send packet
-                    // sendEchoReply(dip
-                    // Check to see if the ping was sent to the controller
-
+                    handleICMPPacket((Ethernet) formattedPak, icmpPak, inPkt.getIncomingNodeConnector());
                 }
             }
         }
@@ -107,7 +101,7 @@ public class GetPackets implements IListenDataPacket {
         IPv4 ipPak = (IPv4)pkt.getParent();
         InetAddress sourceIP = NetUtils.getInetAddress(ipPak.getSourceAddress());
         InetAddress targetIP = NetUtils.getInetAddress(ipPak.getDestinationAddress());
-
+        // Read ICMP type if echo, then create echo reply
         //if (pkt.getType() == 0x8 && pkt.getCode() == 0x0) {
         if (true) {
             log.debug("Received ICMP ECHO REQUEST Packet from NodeConnector: {}",

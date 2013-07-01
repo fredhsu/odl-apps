@@ -1,6 +1,7 @@
 package com.example.getpackets;
 
 import java.net.InetAddress;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 import org.opendaylight.controller.sal.core.NodeConnector;
@@ -66,6 +67,8 @@ public class GetPackets implements IListenDataPacket {
         Packet formattedPak = this.dataPacketService.decodeDataPacket(inPkt);
         System.out.println("packet");
         System.out.println(formattedPak);
+        //ByteBuffer bb = ByteBuffer.wrap(inPkt.getPacketData());
+        
         if (formattedPak instanceof Ethernet) {
             System.out.println(formattedPak);
             Object nextPak = formattedPak.getPayload();

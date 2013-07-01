@@ -1,4 +1,4 @@
-package com.example.mystats;
+package com.example.icmpreply;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

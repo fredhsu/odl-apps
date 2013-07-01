@@ -1,4 +1,4 @@
-package com.example.getpackets;
+package com.example.icmpreply;
 
 import java.util.Hashtable;
 import java.util.Dictionary;
@@ -21,16 +21,16 @@ public class Activator extends ComponentActivatorAbstractBase {
     }
 
     public Object[] getImplementations() {
-        Object[] res = { GetPackets.class };
+        Object[] res = { ICMPReply.class };
         return res;
     }
 
     public void configureInstance(Component c, Object imp, String containerName) {
-        if (imp.equals(GetPackets.class)) {
+        if (imp.equals(ICMPReply.class)) {
             // export the service
             Dictionary<String, String> props = new Hashtable<String, String>();
             props.put("salListenerName", "getpackets");
-            c.setInterface(new String[] { GetPackets.class.getName(),
+            c.setInterface(new String[] { ICMPReply.class.getName(),
                 IListenDataPacket.class.getName() }, props);
             c.add(createContainerServiceDependency(containerName).setService(
                     IDataPacketService.class).setCallbacks(

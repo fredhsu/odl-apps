@@ -1,4 +1,4 @@
-package com.example.getpackets;
+package com.example.icmpreply;
 
 import java.net.InetAddress;
 import java.util.Arrays;
@@ -27,13 +27,13 @@ import org.slf4j.LoggerFactory;
  * install file:///home/fhsu/code/odl-apps/getpackets/target/getpackets-1.4.0-SNAPSHOT.jar
  */
 
-public class GetPackets implements IListenDataPacket {
+public class ICMPReply implements IListenDataPacket {
     private static final Logger log = LoggerFactory
-            .getLogger(GetPackets.class);
+            .getLogger(ICMPReply.class);
     private IDataPacketService dataPacketService = null;
     private ISwitchManager switchManager = null;
 
-    public GetPackets() {
+    public ICMPReply() {
 
     }
 

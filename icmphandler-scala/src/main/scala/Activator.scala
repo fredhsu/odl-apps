@@ -1,8 +1,9 @@
-package com.example.mystats
+package com.example.icmphandler
 import org.osgi.framework.{ BundleActivator, BundleContext }
 
 import org.opendaylight.controller.sal._
-import org.opendaylight.controller.statisticsmanager.IStatisticsManager
+import org.opendaylight.controller.sal.packet.IListenDataPacket
+import org.opendaylight.controller.sal.packet._
 import org.opendaylight.controller.switchmanager.ISwitchManager
 import org.opendaylight.controller.sal.utils.ServiceHelper
 import scala.collection.JavaConversions._
@@ -10,34 +11,35 @@ import scala.collection.JavaConversions._
 class Activator extends BundleActivator {
   override def start(context: BundleContext) {
     println("Start OSGi Bundle...")
-    val mystats = new MyStats()
-    mystats.start
-  }
+    val icmphandler = new icmphandler()
+    icmphandler.start
+}
 
   override def stop(context: BundleContext) {
     println("Stop OSGi Bundle...")
   }
-}
+  }
 
-class MyStats {
+class icmphandler extends IListenDataPacket{
+    val containerName = "default"
+    val dataPacketService:IDataPacketService =
+      org.opendaylight.controller.sal.utils.ServiceHelper.getInstance(classOf[IDataPacketService], containerName,
+        this).asInstanceOf[IDataPacketService]
   def start() = {
     println("Start class")
-    getFlowStatistics
+    getIcmpPackets
   }
-	def getFlowStatistics = {
-		val containerName = "default"
-		val statsManager:IStatisticsManager = org.opendaylight.controller.sal.utils.ServiceHelper.getInstance(classOf[IStatisticsManager], containerName, this).asInstanceOf[IStatisticsManager]
+  def getIcmpPackets = {
     val swmgrclass = classOf[ISwitchManager]
     println(swmgrclass)
-		val switchManager:ISwitchManager = ServiceHelper.getInstance(classOf[ISwitchManager], containerName, this).asInstanceOf[ISwitchManager]
+    val switchManager:ISwitchManager = ServiceHelper.getInstance(classOf[ISwitchManager], containerName, this).asInstanceOf[ISwitchManager]
     switchManager.getNodes().map( x => println("Node: " + x))
-    /* Replacing the following with the coe above to make it more functional
-    val nodes:scala.collection.mutable.Set[org.opendaylight.controller.sal.core.Node] = switchManager.getNodes()
-
-    for (node <- nodes) {
-      println("Node: " + node)
-    }
-    */
+  }
+  override def receiveDataPacket(inPkt: RawPacket): PacketResult = {
+    println("Got a packet")
+    val formattedPak: Packet = dataPacketService.decodeDataPacket(inPkt)
+    println("formattedPak")
+    PacketResult.IGNORED
   }
 }
 

@@ -11,9 +11,9 @@ import scala.collection.JavaConversions._
 class Activator extends BundleActivator {
   override def start(context: BundleContext) {
     println("Start OSGi Bundle...")
-    val icmphandler = new icmphandler()
-    icmphandler.start
-}
+    val getpackets = new MyStats()
+    getpackets.start
+  }
 
   override def stop(context: BundleContext) {
     println("Stop OSGi Bundle...")

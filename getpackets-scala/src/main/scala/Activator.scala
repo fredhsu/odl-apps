@@ -1,8 +1,7 @@
-package com.example.mystats
+package com.example.getpackets
 import org.osgi.framework.{ BundleActivator, BundleContext }
 
 import org.opendaylight.controller.sal._
-import org.opendaylight.controller.statisticsmanager.IStatisticsManager
 import org.opendaylight.controller.switchmanager.ISwitchManager
 import org.opendaylight.controller.sal.utils.ServiceHelper
 import scala.collection.JavaConversions._
@@ -10,8 +9,8 @@ import scala.collection.JavaConversions._
 class Activator extends BundleActivator {
   override def start(context: BundleContext) {
     println("Start OSGi Bundle...")
-    val mystats = new MyStats()
-    mystats.start
+    val getpackets = new GetPackets()
+    getpackets.start
   }
 
   override def stop(context: BundleContext) {
@@ -19,7 +18,7 @@ class Activator extends BundleActivator {
   }
 }
 
-class MyStats {
+class GetPackets {
   def start() = {
     println("Start class")
     getFlowStatistics
